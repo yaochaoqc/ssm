@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.ssm.dao.IUserDao">
+	<!-- <resultMap id="BaseResultMap" type="com.yc.ssm.entity.User">
+		<id column="id" property="id" />
+		<result column="userName" property="userName" />
+		<result column="password" property="password" />
+		<result column="isSuper" property="isSuper" />
+	</resultMap> -->
+
+	<sql id="Base_Column_List">
+		id, userName, password, isSuper
+	</sql>
+
+	<resultMap type="com.yc.ssm.entity.User" id="BaseResultMap">
+		<id column="id" property="id" jdbcType="VARCHAR" />
+		<!-- <result column="userId" property="userId" jdbcType="VARCHAR"/> -->
+		<result column="userName" property="userName" jdbcType="VARCHAR" />
+		<result column="password" property="password" jdbcType="VARCHAR" />
+		<result column="isSuper" property="isSuper" jdbcType="INTEGER" />
+	</resultMap>
+
+
+	<select id="login" resultType="com.yc.ssm.entity.User">
+		SELECT
+		<include refid="Base_Column_List" />
+		<!-- id, userName, password, isSuper -->
+		FROM
+		user
+		<where>
+			1=1
+			<if test="userName !=null and userName !=''">
+				AND userName = #{userName}
+			</if>
+			<if test="password !=null and password !=''">
+				AND password = #{password}
+			</if>
+		</where>
+	</select>
+
+	<insert id="register" parameterType="com.yc.ssm.entity.User">
+		insert into
+		user(id,userName,password,isSuper)
+		values(#{id},#{userName},#{password},#{isSuper})
+	</insert>
+
+	<select id="obtainUsers" resultType="com.yc.ssm.entity.User">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM
+		user
+		<where>
+			1=1
+			<if test="id !=null and id !=''">
+				AND id = #{id}
+			</if>
+			<if test="userName !=null and userName !=''">
+				AND userName = #{userName}
+			</if>
+			<if test="password !=null and password !=''">
+				AND password = #{password}
+			</if>
+			<if test="isSuper !=null and isSuper !=''">
+				AND isSuper = #{isSuper}
+			</if>
+		</where>
+	</select>
+
+	<delete id="delUserById" parameterType="com.yc.ssm.entity.User">
+		DELETE FROM user
+		<where>
+			id = #{id}
+		</where>
+	</delete>
+</mapper>
