@@ -57,8 +57,7 @@
 		<property name="defaultViews">
 			<list>
 				<!-- ModelAndView里的数据变成JSON -->
-				<bean
-					class="org.springframework.web.servlet.view.json.MappingJackson2JsonView" />
+				<bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView" />
 			</list>
 		</property>
 		<property name="ignoreAcceptHeader" value="true"></property>
@@ -71,6 +70,22 @@
 		<!-- <property name="prefix" value="/WEB-INF/jsp/" /> -->
 		<property name="prefix" value="/ssm/pages/" />
 		<property name="suffix" value=".jsp" />
+	</bean>
+
+
+	<!--<bean id="simpleJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="myBean" />
+		<property name="targetMethod" value="printMessage" />
+	</bean>-->
+
+	<bean name="firstComplexJobDetail"    class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass" value="com.defonds.scheduler.jobs.FirstScheduledJob" />
+		<property name="jobDataMap">
+			<map>
+
+			</map>
+		</property>
+		<property name="durability" value="true" />
 	</bean>
 
 </beans>

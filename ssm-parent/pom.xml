@@ -38,6 +38,7 @@
 		<javax.mail-api.version>1.5.5</javax.mail-api.version>
 		<javax.mail.version>1.5.5</javax.mail.version>
 		<mail.version>1.4.5</mail.version>
+		<quartz.version>2.2.1</quartz.version>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
@@ -261,6 +262,17 @@
 				<version>${mail.version}</version>
 			</dependency>
 
+			<!-- Quartz定时器 -->
+			<dependency>
+				<groupId>org.quartz-scheduler</groupId>
+				<artifactId>quartz</artifactId>
+				<version>${quartz.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.quartz-scheduler</groupId>
+				<artifactId>quartz-jobs</artifactId>
+				<version>${quartz.version}</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 

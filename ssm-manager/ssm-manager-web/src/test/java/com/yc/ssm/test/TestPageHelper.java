@@ -35,4 +35,5 @@ public class TestPageHelper {
 		System.out.println("共有："+ total + "个用户");
 		
 	}
+
 }
