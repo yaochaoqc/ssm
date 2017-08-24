@@ -39,6 +39,8 @@
 		<javax.mail.version>1.5.5</javax.mail.version>
 		<mail.version>1.4.5</mail.version>
 		<quartz.version>2.2.1</quartz.version>
+		<!-- 极光推送 Java SDK -->
+		<jpush.version>3.3.0</jpush.version>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
@@ -272,6 +274,13 @@
 				<groupId>org.quartz-scheduler</groupId>
 				<artifactId>quartz-jobs</artifactId>
 				<version>${quartz.version}</version>
+			</dependency>
+
+			<!-- 极光推送Java SDK -->
+			<dependency>
+				<groupId>cn.jpush.api</groupId>
+				<artifactId>jpush-client</artifactId>
+				<version>${jpush.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
